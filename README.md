@@ -45,9 +45,11 @@ En cas de perte de ce fichier, il peut également relativement facilement être 
 
 ```bash
 cd /opt/pod/abes-wud-docker/
+# modifier le .env et la version dans la variable ABES_WUD_VERSION
 sudo docker compose pull
 sudo docker compose up -d
 sudo docker image prune -f
+# tester son bon fonctionnement avant de déployer sur tous les noeuds docker
 ```
 
 ## Architecture
