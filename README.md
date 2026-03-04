@@ -11,12 +11,12 @@ cd abes-wud-docker
 cp .env-dist .env
 ```
 Personnaliser ensuite les variables souhaitées dans le .env, en particulier :
- - WUD_PORT
- - WUD_DOCKERHUB_USER
- - WUD_DOCKERHUB_PASS
- - WUD_SLACK_TOKEN
- - WUD_SLACK_CHANNEL
- - WUD_SLACK_TITLE
+ - ABES_WUD_PORT
+ - ABES_WUD_DOCKERHUB_USER
+ - ABES_WUD_DOCKERHUB_PASS
+ - ABES_WUD_SLACK_TOKEN
+ - ABES_WUD_SLACK_CHANNEL
+ - ABES_WUD_SLACK_TITLE
 
 ## Démarrage et arret
 
