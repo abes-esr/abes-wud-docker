@@ -1,0 +1,49 @@
+#######################################
+# WUD
+# Conteneur chargé de mettre à jour automatiquement les autres conteneurs
+# Plus d'info : https://getwud.github.io/wud/#/
+services:
+  abes-wud:
+    image: getwud/wud:latest
+    container_name: whatsupdocker
+    restart: unless-stopped
+    mem_limit: ${MEM_LIMIT}
+    memswap_limit: ${MEMSWAP_LIMIT}
+    cpus: ${CPU_LIMIT}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - ${WUD_PORT}:3000
+    environment:
+      # ########### COMMON ###########
+      TZ: "Europe/Paris"
+      HOST_HOSTNAME: ${HOST_HOSTNAME}
+      WUD_LOG_LEVEL: ${WUD_LOG_LEVEL}
+      WUD_SERVER_FEATURE_DELETE: false
+
+      # ########### REGISTRY ###########
+      WUD_REGISTRY_HUB_PUBLIC_LOGIN: ${WUD_DOCKERHUB_USER}
+      WUD_REGISTRY_HUB_PUBLIC_PASSWORD: ${WUD_DOCKERHUB_PASS}
+
+      # ########### LOCALHOST ###########
+      WUD_WATCHER_LOCAL_CRON: ${WUD_CRON}
+      WUD_WATCHER_LOCAL_WATCHALL: false
+      WUD_WATCHER_LOCAL_WATCHBYDEFAULT: false
+
+      # ########### TRIGGER DOCKER UPDATE ###########
+      WUD_TRIGGER_DOCKER_UPGRADE_PRUNE: true
+
+      # ########### TIGGER SLACK ###########
+      WUD_TRIGGER_SLACK_NOTIF_TOKEN: ${WUD_SLACK_TOKEN}
+      WUD_TRIGGER_SLACK_NOTIF_CHANNEL: ${WUD_SLACK_CHANNEL}
+      WUD_TRIGGER_SLACK_NOTIF_SIMPLETITLE: ${WUD_SLACK_TITLE}
+      WUD_TRIGGER_SLACK_NOTIF_SIMPLEBODY: ${WUD_SLACK_BODY}
+
+      WUD_TRIGGER_SLACK_WUD_TOKEN: ${WUD_SLACK_TOKEN}
+      WUD_TRIGGER_SLACK_WUD_CHANNEL: "notif-pic"
+      WUD_TRIGGER_SLACK_WUD_SIMPLETITLE: ${WUD_SLACK_TITLE}
+      WUD_TRIGGER_SLACK_WUD_SIMPLEBODY: "Une mise à jour est disponible pour le conteneur _*$${container.name}*_"
+
+    labels:
+      - "wud.watch=true"
+      - "wud.trigger.include=slack.wud"
