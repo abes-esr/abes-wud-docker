@@ -11,6 +11,7 @@ cd abes-wud-docker
 cp .env-dist .env
 ```
 Personnaliser ensuite les variables souhaitées dans le .env, en particulier :
+ - ABES_WUD_VERSION
  - ABES_WUD_PORT
  - ABES_WUD_DOCKERHUB_USER
  - ABES_WUD_DOCKERHUB_PASS
