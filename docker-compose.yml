@@ -17,7 +17,6 @@ services:
     environment:
       # ########### COMMON ###########
       TZ: "Europe/Paris"
-      HOST_HOSTNAME: ${HOST_HOSTNAME}
       WUD_LOG_LEVEL: ${ABES_WUD_LOG_LEVEL}
       WUD_SERVER_FEATURE_DELETE: false
 
