@@ -40,7 +40,7 @@ sudo docker compose logs -f --since 5m
 
 ```bash
 cd /opt/pod/abes-wud-docker/
-sudo docker-compose pull
+sudo docker compose pull
 sudo docker compose up -d
 sudo docker image prune -f
 ```
