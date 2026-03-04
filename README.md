@@ -1,5 +1,5 @@
 # abes-wud-docker
-Contient la configuration du [WUD (aka What's up Docker?)](https://getwud.github.io/wud/#/) déployé sur un nœud docker à l'Abes qui permet la mise à jour des conteneurs
+Contient la configuration du [WUD (aka What's up Docker?)](https://getwud.github.io/wud/#/) déployé sur un nœud docker à l'Abes qui permet la mise à jour des conteneurs.
 
 ## Installation
 
@@ -44,3 +44,7 @@ sudo docker compose pull
 sudo docker compose up -d
 sudo docker image prune -f
 ```
+
+## Architecture
+
+Cette brique technique joue le rôle de la _CD_ (continuous deployment) dans la [CI/CD de l'Abes](https://politique-informatique.abes.fr/docs/dev/ci-cd/). Chaque serveur Abes hébergeant un noeud docker (appelés "diplotaxis") est équipé d'une instance de cette application "abes-wud-docker" dont le rôle est donc de mettre à jour automatiquement les applications hébergées sur le noeud en fonction des dernières images docker de l'appli disponibles sur le dockerhub de l'Abes. En parallèle de la mise à jour des applications, des notifications slack sont envoyées par "abes-wud-docker" sur des canaux pour prévenir les collègues Abes qu'une nouvelle version de l'application vient d'être déployée sur dev/test/prod.
