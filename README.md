@@ -36,6 +36,11 @@ sudo docker compose logs -f --tail=50
 sudo docker compose logs -f --since 5m
 ```
 
+## Sauvegardes et restauration
+
+L'unique fichier à sauvegarder et à restaurer est le fichier ``/opt/pod/abes-wud-docker/.env`` qui contient les info pour le déploiement.
+En cas de perte de ce fichier, il peut également relativement facilement être recréé depuis zéro car il ne contient aucune informations qu'on ne pourrait pas reconstituer sans les sauvegardes (ex: numéro de version, token slack)
+
 ## Mise à jour
 
 ```bash
