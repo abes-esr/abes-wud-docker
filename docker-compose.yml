@@ -5,7 +5,7 @@
 services:
   abes-wud:
     image: getwud/wud:latest
-    container_name: whatsupdocker
+    container_name: abes-wud
     restart: unless-stopped
     mem_limit: ${MEM_LIMIT}
     memswap_limit: ${MEM_LIMIT}
