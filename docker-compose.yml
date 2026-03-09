@@ -38,11 +38,6 @@ services:
       WUD_TRIGGER_SLACK_NOTIF_SIMPLETITLE: ${ABES_WUD_SLACK_TITLE}
       WUD_TRIGGER_SLACK_NOTIF_SIMPLEBODY: ${ABES_WUD_SLACK_BODY}
 
-      WUD_TRIGGER_SLACK_WUD_TOKEN: ${ABES_WUD_SLACK_TOKEN}
-      WUD_TRIGGER_SLACK_WUD_CHANNEL: "notif-pic"
-      WUD_TRIGGER_SLACK_WUD_SIMPLETITLE: ${ABES_WUD_SLACK_TITLE}
-      WUD_TRIGGER_SLACK_WUD_SIMPLEBODY: "Une mise à jour est disponible pour le conteneur _*$${container.name}*_"
-
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost:3000/health"]
       interval: 30s
@@ -51,4 +46,4 @@ services:
 
     labels:
       - "wud.watch=true"
-      - "wud.trigger.include=slack.wud"
+      - "wud.trigger.exclude=docker.update,slack.notif"
