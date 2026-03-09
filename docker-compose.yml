@@ -46,4 +46,4 @@ services:
 
     labels:
       - "wud.watch=true"
-      - "wud.trigger.exclude=docker.update,slack.notif"
+      - "wud.trigger.exclude=docker.upgrade,slack.notif"
